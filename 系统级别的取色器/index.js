@@ -11,7 +11,7 @@ https: colorPicker.addEventListener("click", async () => {
     const result = await dropper.open();
     console.log(result);
     colorPreview.style.backgroundColor = colorValue.textContent =
-      result.sRBGHex;
+      result.sRGBHex;
   } catch (error) {
     console.error(error);
   }
