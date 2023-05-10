@@ -1,0 +1,38 @@
+body {
+  background: url(./bg.jpeg) no-repeat top/cover;
+}
+
+.pane {
+  position: absolute;
+  top: 100px;
+  right: 100px;
+  width: 100px;
+  height: auto;
+  border-radius: 10px;
+  background: #fff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pane-item {
+  flex: 1 1 30px;
+  line-height: 30px;
+  margin-top: 10px;
+  width: 100%;
+  text-align: center;
+}
+
+.pane .color-value {
+
+}
+
+.pane .color-picker {
+  border: 1px solid green;
+  text-align: center;
+  cursor: pointer;
+}
+
+.pane .color-preview {
+}
