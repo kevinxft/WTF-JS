@@ -67,6 +67,11 @@ onMounted(() => {
     childList: true,
     subtree: true,
   });
+
+  parentRef.value.oncopy = (evt) => {
+    evt.preventDefault();
+    console.log("😑，不给复制");
+  };
 });
 
 onUnmounted(() => {
@@ -81,5 +86,6 @@ onUnmounted(() => {
   width: 500px;
   height: 500px;
   position: relative;
+  user-select: none;
 }
 </style>
