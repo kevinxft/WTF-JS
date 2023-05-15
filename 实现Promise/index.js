@@ -99,11 +99,60 @@ class MyPromise {
       this.#run();
     });
   }
+
+  catch(onRejected) {
+    return this.then(undefined, onRejected);
+  }
+
+  finally(onFinally) {
+    return this.then(
+      (data) => {
+        onFinally();
+        return data;
+      },
+      (err) => {
+        onFinally();
+        throw err;
+      }
+    );
+  }
+
+  static reject(reason) {
+    return new MyPromise((resolve, reject) => {
+      reject(reason);
+    });
+  }
+
+  static resolve(value) {
+    if (value instanceof MyPromise) return value;
+    let _resolve, _reject;
+    const p = new MyPromise((resolve, reject) => {
+      _resolve = resolve;
+      _reject = reject;
+    });
+    if (p.#isPromiseLike(value)) {
+      value.then(_resolve, _reject);
+    } else {
+      _resolve(value);
+    }
+    return p;
+  }
 }
 
 // test1
-new MyPromise((resolve) => {
-  setTimeout(() => {
-    resolve(100);
-  }, 1000);
-}).then((data) => console.log(data));
+// new MyPromise((resolve) => {
+//   setTimeout(() => {
+//     resolve(100);
+//   }, 1000);
+// }).then((data) => console.log(data));
+
+// MyPromise.resolve, test static function
+MyPromise.resolve(1)
+  .then((data) => console.log(data))
+  .finally(() => console.log("finally 1"));
+
+MyPromise.reject(2)
+  .catch((err) => console.log(err))
+  .finally(() => {
+    console.log("finally 2");
+  });
