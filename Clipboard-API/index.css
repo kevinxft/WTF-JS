@@ -1,0 +1,22 @@
+.main {
+  margin: 100px auto 0;
+  width: 70vmin;
+}
+
+.text {
+  margin-top: 20px;
+  border: 2px solid rgb(238, 102, 53);
+  padding: 30px;
+}
+
+.text2 {
+  border-color: rgb(14, 216, 14);
+}
+
+.text3 {
+  border-color: rgb(117, 90, 239);
+}
+
+h2 {
+  margin-top: 20px;
+}
