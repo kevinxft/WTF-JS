@@ -1,30 +1,50 @@
 .main {
-  --blue: #409Eff;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 100px;
+  background-image: linear-gradient(to right, #222831 0%, #393e46 100%);
+  min-height: 100vh;
+  counter-reset: num; /** 重置计数器为0 **/
+}
+
+.link::before {
+  counter-increment: num;
+  content: counter(num) ". ";
 }
 
 .link {
-  color: var(--blue);
+  --linear: linear-gradient(to right, #00adb5 0%, #eeeeee 100%);
   text-align: center;
   text-decoration: none;
   position: relative;
-  font-size: 40px;
+  font-size: 50px;
   margin-bottom: 20px;
+  background: var(--linear);
+  background-clip: text;
+  color: transparent;
+  -webkit-background-clip: text;
+  transition: background-size 1000ms;
 }
 
 .link .tips {
   font-size: 20px;
 }
 
-.link:hover::after {
+.link::after {
   content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
   position: absolute;
   left: 0;
-  right: 0;
-  bottom: 0;
-  border-bottom: 1px solid var(--blue);
+  top: 0;
+  background: var(--linear) no-repeat right bottom;
+  background-size: 0 4px;
+  transition: background-size 1000ms;
+}
+
+.link:hover::after {
+  background-position: left bottom;
+  background-size: 100% 4px;
 }
