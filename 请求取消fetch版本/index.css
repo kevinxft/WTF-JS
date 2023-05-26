@@ -31,8 +31,5 @@ input {
   text-decoration: none;
   color: red;
   line-height: 2;
-  background: linear-gradient(to right, #27374d, #9db2bf);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
+  color: #27374d;
 }
