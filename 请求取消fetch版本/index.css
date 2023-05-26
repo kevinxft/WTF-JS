@@ -1,0 +1,38 @@
+body {
+  display: flex;
+  padding-top: 10vmin;
+  padding-left: 10vmin;
+  min-height: 100vh;
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  width: 30vmin;
+  height: 30px;
+  border-radius: 10px;
+  padding: 0 10px;
+  caret-color: #f2bed1;
+  border: 2px solid #f2bed1;
+  outline: none;
+  color: #f2bed1;
+}
+
+.result {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.result a {
+  text-decoration: none;
+  color: red;
+  line-height: 2;
+  background: linear-gradient(to right, #27374d, #9db2bf);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
