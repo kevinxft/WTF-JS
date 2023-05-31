@@ -21,7 +21,19 @@ console.log(obj)
   ```js
     { 1: 1, 2: 2, a: 2 } // 注意输出的顺序也有讲究
   ```
-  </p>
 </details>
 
+## Question 2（只出现一次的数字）
+给你一个 非空 整数数组 nums ，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。
+> [leetcode题目地址](https://leetcode.cn/problems/single-number/)
 
+<details>
+  <summary>answer</summary>
+
+  ```js
+   var singleNumber = function(nums) {
+    return nums.reduce((a, b) => a ^ b) 
+    // 如果reduce的第二个参数没有填写，那么初始值就取数组的第一个数
+  };
+  ```
+</details>
