@@ -6,6 +6,7 @@
 // @author       You
 // @match        https://juejin.cn/book/**
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=juejin.cn
+// @source       https://raw.githubusercontent.com/kevinxft/WTF-JS/main/%E6%8E%98%E9%87%91%E5%B0%8F%E5%86%8C%E5%AE%BD%E5%B1%8F%E8%84%9A%E6%9C%AC/index.js
 // @grant        none
 // ==/UserScript==
 
