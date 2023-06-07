@@ -21,7 +21,6 @@ function singleton(className) {
         params = args;
       }
       if (!isSameParams(params, args)) {
-        console.log(ins);
         throw Error("已经有一个实例");
       }
       return ins;
