@@ -132,3 +132,34 @@ console.log(obj)
   console.log("b" in obj ? "存在" : "不存在");
   ```
 </details>
+
+## Question 5 大整数相加函数
+
+<details>
+  <summary>answer</summary>
+
+  ```js
+  /**
+ * 两个字符串数字相加
+ * @param {string} a
+ * @param {string} b
+ */
+function sum(a, b) {
+  const len = Math.max(a.length, b.length);
+  a = a.padStart(len);
+  b = b.padStart(len);
+  let carry = 0;
+  let result = "";
+  for (let i = len - 1; i >= 0; i--) {
+    const sum = +a[i] + +b[i] + carry;
+    result = (sum % 10) + result;
+    carry = Math.floor(sum / 10);
+  }
+  if (carry) {
+    result = carry + result;
+  }
+  return result;
+}
+
+  ```
+</details>
