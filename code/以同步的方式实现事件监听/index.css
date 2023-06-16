@@ -1,0 +1,16 @@
+body {
+  min-height: 100vh;
+  display: grid;
+  background: radial-gradient(ellipse at center, #ccffbd, #7eca9c);
+}
+
+button {
+  margin: auto;
+  border: none;
+  outline: none;
+  color: white;
+  background: #40394a;
+  padding: 20px 30px;
+  border-radius: 10px;
+  cursor: pointer;
+}
