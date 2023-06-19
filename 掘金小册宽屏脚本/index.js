@@ -12,15 +12,30 @@
 
 (function () {
   "use strict";
-  document.addEventListener("DOMContentLoaded", () => {
-    let timer;
-    const unsetWidth = () => {
-      const ele = document.querySelector(".section-page");
-      if (ele) {
-        ele.style = "max-width: unset;";
-        clearInterval(timer);
-      }
-    };
+  let timer;
+  const unsetWidth = () => {
+    const ele = document.querySelector(".section-page");
+    if (ele) {
+      ele.style = "max-width: unset;";
+      clearInterval(timer);
+    }
+  };
+  function resetLayout() {
     timer = setInterval(unsetWidth, 500);
+  }
+  const _wr = function (type) {
+    const orig = history[type];
+    return function () {
+      const rv = orig.apply(this, arguments);
+      const e = new Event(type);
+      e.arguments = arguments;
+      window.dispatchEvent(e);
+      return rv;
+    };
+  };
+  history.pushState = _wr("pushState");
+  resetLayout();
+  window.addEventListener("pushState", () => {
+    resetLayout();
   });
 })();
