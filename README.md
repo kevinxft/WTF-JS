@@ -200,7 +200,7 @@ function sum(a, b) {
   ```
 </details>
 
-## Question 手写bind
+## Question 7 手写bind
 
 <details>
   <summary>answer</summary>
