@@ -239,3 +239,75 @@ function sum(a, b) {
 
   ```
 </details>
+
+
+## Question 8 手写call
+
+<details>
+  <summary>answer</summary>
+
+  ```js
+  Function.prototype._call = function (ctx, ...args) {
+    ctx = ctx === undefined || ctx === null ? globalThis : Object(ctx);
+    const key = Symbol("key");
+    const fn = this;
+    Object.defineProperty(ctx, key, {
+      enumerable: false,
+      value: fn,
+    });
+    const result = ctx[key](...args);
+    delete ctx[key];
+    return result;
+  };
+
+  function test(...args) {
+    console.log(this);
+    console.log(args);
+    return "result";
+  }
+
+  const res = test._call({ name: "kevin" }, 1, 2, 3);
+  console.log("res", res);
+
+
+  ```
+</details>
+
+## Question 9 模拟微任务
+
+<details>
+  <summary>answer</summary>
+
+  ```js
+  function micorTask(fn) {
+    if (typeof Promise === "function") {
+      Promise.resolve().then(fn);
+      return;
+    }
+
+    if (typeof MutationObserver === "function") {
+      const ob = new MutationObserver(fn);
+      const node = document.createTextNode("");
+      ob.observe(node, {
+        characterData: true,
+      });
+      node.data = "2";
+      return;
+    }
+
+    if (process && typeof process.nextTick === "function") {
+      Process.nextTick(fn);
+      return;
+    }
+
+    if (typeof setImmediate === "function") {
+      setImmediate(fn);
+      return;
+    }
+
+    setTimeout(fn, 0);
+  }
+
+
+  ```
+</details>
