@@ -311,3 +311,25 @@ function sum(a, b) {
 
   ```
 </details>
+
+## Question 10 让下面结构成立
+```js
+let [a, b] = { a: 1, b: 2};
+```
+<details>
+  <summary>answer</summary>
+
+  ```js
+  Object.prototype[Symbol.iterator] = function () {
+    return Object.values(this)[Symbol.iterator]();
+  };
+
+  let [a, b] = {
+    a: 1,
+    b: 2,
+  };
+
+  console.log(a, b);
+
+  ```
+</details>
