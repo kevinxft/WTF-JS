@@ -333,3 +333,71 @@ let [a, b] = { a: 1, b: 2};
 
   ```
 </details>
+
+
+## Question 11 class转成function
+```js
+// 将下面的类转成function
+class Example {
+  constructor(name) {
+    this.name = name;
+  }
+
+  func() {
+    console.log(this.name);
+  }
+}
+```
+
+<details>
+  <summary>answer</summary>
+
+  ```js
+  "use strict";
+
+  function Example(name) {
+    // 保证是通过new调用
+    if (!new.target) {
+      throw new TypeError(
+        `class constructor Example cannot be invoked without 'new'`
+      );
+    }
+
+    this.name = name;
+  }
+  // 类的方法不能被枚举
+  Object.defineProperty(Example.prototype, "func", {
+    value: function () {
+      if (new.target) {
+        throw new TypeError("不能用new来调用");
+      }
+      console.log(thi.name);
+    },
+    enumerable: false,
+  });
+  ```
+</details>
+
+
+## Question 12重试多次的请求
+
+<details>
+  <summary>answer</summary>
+
+  ```js
+  function request(url, maxCount = 5) {
+    return fetch(url).catch((err) => {
+      maxCount <= 0 ? Promise.reject(err) : request(url, maxCount - 1);
+    });
+  }
+
+  request("https://api.tachikoma.online")
+    .then((resp) => {
+      console.log(resp);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
+  ```
+</details>
